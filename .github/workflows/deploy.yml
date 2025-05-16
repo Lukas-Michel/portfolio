@@ -17,6 +17,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      npm_config_production: false
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
@@ -26,6 +28,10 @@ jobs:
           path: .
           node-version: 20
           package-manager: pnpm@latest
+      - name: Upload build output for Pages
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./dist
 
   deploy:
     needs: build
