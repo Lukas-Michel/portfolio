@@ -28,10 +28,6 @@ jobs:
           path: .
           node-version: 20
           package-manager: pnpm@latest
-      - name: Upload build output for Pages
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: ./dist
 
   deploy:
     needs: build
